@@ -1,0 +1,71 @@
+/* General container styles */
+.container {
+    max-width: 600px;
+    padding: 30px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    font-family: 'Roboto', sans-serif;
+}
+.add-scholarship{
+    background-image: url('../assets/bg.jpg');
+    padding-top: 12vh;
+}
+/* Heading styles */
+.container h2 {
+    color: #34495e;
+    margin-bottom: 25px;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+/* Form labels */
+form label {
+    display: block;
+    margin-bottom: 10px;
+    color: #2c3e50;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+/* Form input fields */
+input[type="text"],
+input[type="number"],
+input[type="date"],
+textarea {
+    width: 100%;
+    padding: 12px 16px;
+    margin-bottom: 18px;
+    border: 1px solid #bdc3c7;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #ecf0f1;
+    box-sizing: border-box;
+}
+
+/* Submit button */
+.button {
+    width: 100%;
+    padding: 14px;
+    background-color: #e67e22;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #d35400;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+    .container {
+        margin: 20px;
+        padding: 20px;
+    }
+}

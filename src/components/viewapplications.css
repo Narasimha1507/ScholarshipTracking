@@ -1,0 +1,85 @@
+/* General container styles */
+.container {
+    margin-bottom: 5vh;
+    padding: 30px;
+    max-width: 90%;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    font-family: 'Roboto', sans-serif;
+}
+.view-applications{
+    background-image: url('../assets/bg.jpg');
+    padding-top: 12vh;
+}
+
+/* Heading styles */
+.container h2 {
+    color: #34495e;
+    margin-bottom: 25px;
+    font-size: 28px;
+    font-weight: 700;
+    text-align: center;
+}
+
+/* Table styles */
+.applications-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+
+.applications-table th,
+.applications-table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.applications-table th {
+    background-color: #34495e;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.applications-table td {
+    color: #2c3e50;
+}
+
+.applications-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Button styles */
+.button {
+    padding: 8px 12px;
+    margin-right: 10px;
+    background-color: #e67e22;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #d35400;
+}
+
+/* Approve and Reject button styles */
+.approve-btn {
+    background-color: #2ecc71;
+}
+
+.approve-btn:hover {
+    background-color: #27ae60;
+}
+
+.reject-btn {
+    background-color: #e74c3c;
+}
+
+.reject-btn:hover {
+    background-color: #c0392b;
+}

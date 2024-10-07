@@ -1,0 +1,148 @@
+/* Global styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: #f4f7f9;
+    color: #333;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+}
+
+h2 {
+    font-size: 2.5rem;
+    color: white;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 1.125rem;
+    color: white;
+    margin-bottom: 20px;
+    line-height: 1.8;
+}
+
+/* Add button styles */
+button {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+/* Container for the entire page */
+
+/* Background video styling */
+.background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the video covers the entire screen */
+    z-index: -1; /* Keeps the video behind the content */
+    pointer-events: none; /* Prevents any interaction with the video */
+}
+
+/* Content container styling */
+.content {
+    position: relative;
+    z-index: 1; /* Ensures the content is above the video */
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Adds shadow to improve readability */
+    max-width: 800px;
+    padding: 20px;
+    background-color: #2c3e50; /* Adds a semi-transparent background for better text visibility */
+    border-radius: 10px;
+}
+
+/* Styling for the heading and paragraph */
+.content h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.content p {
+    font-size: 1.5rem;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .content h2 {
+        font-size: 2.5rem;
+    }
+
+    .content p {
+        font-size: 1.2rem;
+    }
+}
+
+/* Ensure the page takes up the full viewport height */
+.homepage {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.content-wrapper {
+    flex: 1; /* Makes this section take up all the available vertical space */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25vh 0 25vh 0;
+}
+
+.background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.content {
+    z-index: 1;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    background-color: #2c3e50; /* Adds a semi-transparent background behind the text */
+    border-radius: 10px;
+}
+
+/* Footer will always stick to the bottom */
+footer {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    width: 100%;
+}

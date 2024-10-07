@@ -1,0 +1,70 @@
+/* General container styles */
+.container1 {
+    margin-bottom: 25vh;
+    max-width: 1000px;
+    margin-left: 35vh;
+    padding: 30px;
+    background-color: #ecf0f1;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+.admin-home{
+    background-image: url('../assets/bg.jpg');
+    padding-top: 12vh;
+}
+
+/* Heading styles */
+h1 {
+    color: #2c3e50;
+    margin-bottom: 25px;
+    font-size: 40px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+/* Admin option cards */
+.admin-options {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    margin-bottom: 20px;
+}
+
+.card h2 {
+    color: #34495e;
+    margin-bottom: 15px;
+    font-size: 25px;
+}
+
+.card p {
+    color: #7f8c8d;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+/* Button styles */
+.button {
+    padding: 12px 20px;
+    background-color: #e67e22;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #d35400;
+}

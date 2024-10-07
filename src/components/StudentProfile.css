@@ -1,0 +1,50 @@
+.profile-container {
+    margin: 0 auto;
+    margin-bottom: 12vh;
+    max-width: 600px;
+    background-color: #2c3e50;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    font-family: 'Roboto', sans-serif;
+}
+.studentprofile{
+    background-image: url('../assets/bg.jpg');
+    padding-top: 12vh;
+}
+
+.profile-container h2 {
+    text-align: center;
+    color: white;
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+.profile-card {
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.profile-card p {
+    font-size: 18px;
+    color: #34495e;
+    margin: 10px 0;
+}
+
+.profile-card p strong {
+    color: #2c3e50;
+}
+
+.profile-card p + p {
+    border-top: 1px solid #ecf0f1;
+    padding-top: 10px;
+}
+
+@media (max-width: 768px) {
+    .profile-container {
+        margin: 20px;
+        padding: 20px;
+    }
+}

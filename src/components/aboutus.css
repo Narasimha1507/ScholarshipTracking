@@ -1,0 +1,118 @@
+/* About Us page container */
+.aboutus-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+.aboutus{
+    background-image: url('../assets/bg.jpg');
+    padding-top:50px;
+    padding-bottom: 50px;
+}
+
+/* About Us content */
+.aboutus-content {
+    padding: 40px;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Headings */
+.aboutus-content h2 {
+    font-size: 3rem;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #3498db;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+.aboutus-content h3 {
+    font-size: 2rem;
+    color: #3498db;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+/* Paragraphs */
+.aboutus-content p {
+    font-size: 1.125rem;
+    color: #7f8c8d;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+/* List styling */
+.aboutus-content ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+.aboutus-content ul li {
+    font-size: 1.125rem;
+    color: #34495e;
+    margin-bottom: 10px;
+    padding-left: 10px;
+}
+
+/* Contact link */
+.aboutus-content a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.aboutus-content a:hover {
+    color: #2980b9;
+}
+
+/* Box shadow hover effect */
+.aboutus-container:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .aboutus-content {
+        padding: 20px;
+    }
+
+    .aboutus-content h2 {
+        font-size: 2.2rem;
+    }
+
+    .aboutus-content h3 {
+        font-size: 1.8rem;
+    }
+
+    .aboutus-content p {
+        font-size: 1rem;
+    }
+
+    .aboutus-content ul li {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .aboutus-content h2 {
+        font-size: 2rem;
+    }
+
+    .aboutus-content h3 {
+        font-size: 1.5rem;
+    }
+
+    .aboutus-content p {
+        font-size: 0.9rem;
+    }
+
+    .aboutus-content ul li {
+        font-size: 0.9rem;
+    }
+}
