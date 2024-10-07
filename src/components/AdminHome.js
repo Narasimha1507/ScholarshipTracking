@@ -21,7 +21,7 @@ function AdminHome() {
                     </div>
                     <div className="card">
                         <h2>View Reports</h2>
-                        <p>Generate and view application reports and student statistics.</p><br/>
+                        <p>Generate and view reports.</p><br/>
                         <Link to="/applications" className="button">Go to Reports</Link>
                     </div>
                 </div>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import HomePage from './components/HomePage';
@@ -7,7 +7,6 @@ import ScholarshipDetail from './components/ScholarshipDetail';
 import ApplicationForm from './components/ApplicationForm';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
-import AdminDashboard from './components/AdminDashboard';
 import AboutUs from './components/AboutUs';
 import ContactUs from './components/ContactUs';
 import ForgotPassword from './components/ForgotPassword';
@@ -21,11 +20,41 @@ import AddScholarship from './components/AddScholarship';
 import ViewStudent from './components/ViewStudent';
 import ViewApplicationsTable from './components/ViewApplications';
 import ViewScholarships from './components/ViewScholarships';
+import AdminNavBar from './components/AdminNavBar'
+import StudentNavBar from './components/StudentNavBar'
 
-function App() {
+export default function App() {
+    const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false);
+    const [isStudentLoggedIn, setIsStudentLoggedIn] = useState(false);
+    useEffect(() => {
+        const adminLoggedIn = localStorage.getItem('isAdminLoggedIn') === 'true';
+        const studentLoggedIn = localStorage.getItem('isStudentLoggedIn') === 'true';
+        
+        setIsAdminLoggedIn(adminLoggedIn);
+        setIsStudentLoggedIn(studentLoggedIn);
+      }, []);
+
+      const onAdminLogin = () => {
+        localStorage.setItem('isAdminLoggedIn', 'true');
+        setIsAdminLoggedIn(true);
+      }
+    
+      const onStudentLogin = () => {
+        localStorage.setItem('isStudentLoggedIn', 'true');
+        setIsStudentLoggedIn(true);
+      }
     return (
         <Router>
-            <Navbar/>
+            {isAdminLoggedIn ? (
+          <AdminNavBar />
+        ) : isStudentLoggedIn ? (
+          <StudentNavBar />
+        ) : (
+          <Navbar
+            onAdminLogin={onAdminLogin}
+            onStudentLogin={onStudentLogin}
+          />
+        )}
             <Routes>
                 {/* Home Page Route */}
                 <Route path="/" element={<HomePage />} />
@@ -41,7 +70,7 @@ function App() {
                 <Route path="/studenthome" element={<StudentHome />} />
                 <Route path="/studentscholarship" element={<StudentScholarship />} />
                 <Route path="/profile" element={<StudentProfile />} />
-                <Route path="/admin" element={<AdminLogin />} />
+                <Route path="/admin" element={<AdminLogin onAdminLogin={onAdminLogin}/>} />
                 <Route path="/adminhome" element={<AdminHome />} />
                 <Route path="/addstudent" element={<AddStudent />} />
                 <Route path="/addscholarship" element={<AddScholarship />} />
@@ -54,16 +83,11 @@ function App() {
                 <Route path="/apply" element={<ApplicationForm />} />
                 
                 {/* Login Route */}
-                <Route path="/login" element={<Login />} />
+                <Route path="/login" element={<Login onStudentLogin={onStudentLogin}/>} />
                 
                 {/* SignUp Route */}
                 <Route path="/signup" element={<SignUp />} />
-                
-                {/* Admin Dashboard Route */}
-                <Route path="/admin" element={<AdminDashboard />} />
             </Routes>
         </Router>
     );
 }
-
-export default App;

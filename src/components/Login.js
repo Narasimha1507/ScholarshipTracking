@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'; // Import Link and useNavi
 import './login.css';
 import Footer from './Footer';
 
-function Login() {
+function Login({onStudentLogin}) {
     const [formData, setFormData] = useState({ email: '', password: '' });
     const navigate = useNavigate(); // Use navigate hook for redirection
 
@@ -15,7 +15,7 @@ function Login() {
         e.preventDefault();
         // Simulate successful authentication
         alert('Logged in successfully!');
-        
+        onStudentLogin();
         // Redirect to StudentHome
         navigate('/studenthome');
     };

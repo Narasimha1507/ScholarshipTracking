@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom'; // Import Link and useNavigate f
 import './adminlogin.css';
 import Footer from './Footer';
 
-function Login() {
-    const [formData, setFormData] = useState({ email: '', password: '' });
+function AdminLogin({onAdminLogin}) {
+    const [formData, setFormData] = useState({ username: '', password: '' });
     const navigate = useNavigate(); // Use navigate hook for redirection
 
     const handleChange = (e) => {
@@ -15,7 +15,7 @@ function Login() {
         e.preventDefault();
         // Simulate successful authentication
         alert('Logged in successfully!');
-        
+        onAdminLogin();
         // Redirect to StudentHome
         navigate('/adminhome');
     };
@@ -25,10 +25,10 @@ function Login() {
             <div className="logincontainer">
                 <h2>Admin Login</h2>
                 <form onSubmit={handleSubmit}>
-                    <label>Email:</label>
+                    <label>Username:</label>
                     <input
-                        type="email"
-                        name="email"
+                        type="text"
+                        name="text"
                         value={formData.email}
                         onChange={handleChange}
                         required
@@ -49,4 +49,4 @@ function Login() {
     );
 }
 
-export default Login;
+export default AdminLogin;

@@ -28,8 +28,10 @@ h1 {
 /* Admin option cards */
 .admin-options {
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+    justify-content: space-between; /* Add spacing between items */
+    align-items: stretch; /* Ensures cards have same height */
+    flex-wrap: nowrap; /* Prevent cards from wrapping to next line */
+    gap: 20px; /* Space between cards */
 }
 
 .card {
@@ -37,8 +39,9 @@ h1 {
     border-radius: 8px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    width: 300px;
-    margin-bottom: 20px;
+    width: 30%; /* Adjusted width to fit all cards in one line */
+    min-width: 250px; /* Prevent cards from shrinking too much */
+    margin: 0; /* Remove margin to make cards align properly */
 }
 
 .card h2 {
