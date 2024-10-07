@@ -27,9 +27,6 @@ import ViewScholarships from './components/ViewScholarships';
 function App() {
     return (
         <Router>
-            {/* <Navbar /> */}
-
-            {/* <StudentNavBar/> */}
             <AdminNavbar/>
             <Routes>
                 {/* Home Page Route */}
