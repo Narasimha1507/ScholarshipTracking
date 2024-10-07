@@ -12,11 +12,9 @@ import AboutUs from './components/AboutUs';
 import ContactUs from './components/ContactUs';
 import ForgotPassword from './components/ForgotPassword';
 import StudentHome from './components/StudentHome'
-import StudentNavBar from './components/StudentNavBar'
 import StudentScholarship from './components/StudentScholarship'
 import StudentProfile from './components/StudentProfile'
 import AdminLogin from './components/AdminLogin'
-import AdminNavbar from './components/AdminNavBar';
 import AdminHome from './components/AdminHome';
 import AddStudent from './components/AddStudent'
 import AddScholarship from './components/AddScholarship';
@@ -27,7 +25,7 @@ import ViewScholarships from './components/ViewScholarships';
 function App() {
     return (
         <Router>
-            <AdminNavbar/>
+            <Navbar/>
             <Routes>
                 {/* Home Page Route */}
                 <Route path="/" element={<HomePage />} />
