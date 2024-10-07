@@ -14,7 +14,6 @@ function Login({onStudentLogin}) {
     const handleSubmit = (e) => {
         e.preventDefault();
         // Simulate successful authentication
-        alert('Logged in successfully!');
         onStudentLogin();
         // Redirect to StudentHome
         navigate('/studenthome');

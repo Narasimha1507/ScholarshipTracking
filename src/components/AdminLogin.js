@@ -14,7 +14,6 @@ function AdminLogin({onAdminLogin}) {
     const handleSubmit = (e) => {
         e.preventDefault();
         // Simulate successful authentication
-        alert('Logged in successfully!');
         onAdminLogin();
         // Redirect to StudentHome
         navigate('/adminhome');
