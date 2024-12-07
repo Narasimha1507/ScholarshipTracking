@@ -1,0 +1,168 @@
+/* General Layout Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f7fa;
+  background-image: url('../assets/bg.jpg');
+}
+
+.dashboard-container h2 {
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+  width: 100%;
+}
+.dashboard-container h3 {
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.dashboard-container p {
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+}
+
+/* Dashboard Container */
+.dashboard-container {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  
+}
+
+/* Overview and Pie Chart Section (Side by Side) */
+.dashboard-overview-pie-chart {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  gap: 30px; /* Space between overview and pie chart */
+}
+
+/* Overview Section */
+.overview {
+  flex: 1; /* This will ensure that the overview takes up half of the container */
+  padding: 20px;
+  background-color: #e7f3fe;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.overview-data{
+  width: 40vh;
+  margin-left: 20vh;
+}
+
+/* Pie Chart Section */
+.pie-chart-container {
+  flex: 1; /* This will ensure that the pie chart takes up half of the container */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 450px;
+}
+
+/* Pie Chart */
+.pie-chart {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+/* Table Section */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 30px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+  padding: 12px 20px;
+  text-align: left;
+  font-size: 16px;
+  color: #333;
+}
+
+th {
+  background-color: #007bff;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Action Button Styles */
+button {
+  padding: 8px 16px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+button:nth-child(1) {
+  background-color: #28a745;
+  color: white;
+}
+
+button:nth-child(2) {
+  background-color: #dc3545;
+  color: white;
+}
+
+button:focus {
+  outline: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .dashboard-container {
+      padding: 15px;
+  }
+
+  /* Stack the Overview and Pie Chart vertically on smaller screens */
+  .dashboard-overview-pie-chart {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .overview, .pie-chart-container {
+      width: 100%;
+      margin-bottom: 20px;
+  }
+
+  table {
+      font-size: 14px;
+  }
+
+  th, td {
+      padding: 10px;
+  }
+
+  button {
+      font-size: 12px;
+      padding: 6px 12px;
+  }
+}

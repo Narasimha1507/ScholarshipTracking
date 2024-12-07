@@ -60,6 +60,11 @@
     background-color: #d35400;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
+.card h3 {
+    font-size: 1.5rem;
+    font-weight: bolder;
+
+}
 
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {
@@ -69,7 +74,9 @@
     }
 
     .card h3 {
-        font-size: 1.6rem;
+        font-size: 1.9rem;
+        font-weight: bolder;
+
     }
 
     .card p {
@@ -81,3 +88,27 @@
         padding: 8px 15px;
     }
 }
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.toast .close-toast {
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.toast.error {
+    background-color: #f44336;
+}
+

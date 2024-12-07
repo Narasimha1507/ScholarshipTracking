@@ -1,22 +1,48 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import Link and useNavigate for navigation
+import { useNavigate } from 'react-router-dom';
 import './adminlogin.css';
 import Footer from './Footer';
+import axios from 'axios';
 
-function AdminLogin({onAdminLogin}) {
+function AdminLogin({ onAdminLogin }) {
     const [formData, setFormData] = useState({ username: '', password: '' });
-    const navigate = useNavigate(); // Use navigate hook for redirection
+    const [showSuccessToast, setShowSuccessToast] = useState(false); // State for success toast
+    const [showFailureToast, setShowFailureToast] = useState(false); // State for failure toast
+    const [error, setError] = useState('');
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Simulate successful authentication
-        onAdminLogin();
-        // Redirect to StudentHome
-        navigate('/adminhome');
+        
+        try {
+            const response = await axios.post('http://localhost:8080/api/admin/login', formData);
+            
+            if (response.status === 200) {
+                onAdminLogin();
+                setShowSuccessToast(true); // Show the success toast
+                setTimeout(() => {
+                    navigate('/adminhome'); // Navigate to the admin home page after the toast disappears
+                    setShowSuccessToast(false); // Hide the toast after navigating
+                }, 2000);
+            } else {
+                setError('Invalid credentials');
+                setShowFailureToast(true); // Show the failure toast
+                setTimeout(() => setShowFailureToast(false), 3000); // Hide failure toast after 3 seconds
+            }
+        } catch (error) {
+            console.error('Login failed', error);
+            setError('Login failed. Please try again.');
+            setShowFailureToast(true); // Show the failure toast
+            setTimeout(() => setShowFailureToast(false), 3000); // Hide failure toast after 3 seconds
+        }
+    };
+
+    const handleCloseToast = () => {
+        setShowSuccessToast(false); // Close the success toast immediately
     };
 
     return (
@@ -27,8 +53,8 @@ function AdminLogin({onAdminLogin}) {
                     <label>Username:</label>
                     <input
                         type="text"
-                        name="text"
-                        value={formData.email}
+                        name="username"
+                        value={formData.username}
                         onChange={handleChange}
                         required
                     />
@@ -42,6 +68,22 @@ function AdminLogin({onAdminLogin}) {
                     />
                     <button className="button" type="submit">Login</button>
                 </form>
+
+                {/* Show green toast on successful login */}
+                {showSuccessToast && (
+                    <div className="toast-success">
+                        Admin Login Successful!
+                        <span className="close-toast" onClick={handleCloseToast}>&#10006;</span>
+                    </div>
+                )}
+
+                {/* Show red toast on login failure */}
+                {showFailureToast && (
+                    <div className="toast-failure">
+                        Login Failed! {error}
+                        <span className="close-toast" onClick={() => setShowFailureToast(false)}>&#10006;</span>
+                    </div>
+                )}
             </div>
             <Footer />
         </div>

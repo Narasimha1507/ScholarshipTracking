@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // Import Link for navigation
+import { Link, useNavigate } from 'react-router-dom'; // Import Link and useNavigate for navigation
 import "./login.css"; // Import the CSS for styling
 import Footer from './Footer';
+import ReCAPTCHA from "react-google-recaptcha"
+import axios from 'axios';
 
 function SignUp() {
     const [formData, setFormData] = useState({
@@ -20,22 +22,60 @@ function SignUp() {
         confirmPassword: '',
         userType: 'Student', // Default user type
     });
+    const [showToast, setShowToast] = useState(false); // State for the success toast
+    const [showFailureToast, setShowFailureToast] = useState(false); // State for the failure toast
+    const[capVal,setCapVal] = useState(null);
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         
-        // Validate passwords
         if (formData.password !== formData.confirmPassword) {
-            alert('Passwords do not match!');
+            setShowFailureToast(true); // Show the failure toast
+            setTimeout(() => setShowFailureToast(false), 3000); // Hide after 3 seconds
             return;
         }
-        
-        // Sign Up API call
-        alert('Sign up successful!');
+    
+        try {
+            const response = await axios.post('http://localhost:8080/api/users/signup', formData);
+            if (response.status === 200) {
+                setShowToast(true); // Show the success toast
+                setTimeout(() => {
+                    navigate('/login'); // Navigate to the login page after 3 seconds
+                    setShowToast(false); // Hide the toast
+                }, 2000);
+                // Reset form data
+                setFormData({
+                    name: '',
+                    email: '',
+                    phone: '',
+                    aadhar: '',
+                    dob: '',
+                    fatherName: '',
+                    fatherPhone: '',
+                    motherName: '',
+                    motherPhone: '',
+                    college: '',
+                    cgpa: '',
+                    password: '',
+                    confirmPassword: '',
+                    userType: 'Student',
+                });
+            }
+        } catch (error) {
+            console.error('There was an error signing up!', error);
+            setShowFailureToast(true); // Show the failure toast
+            setTimeout(() => setShowFailureToast(false), 3000); // Hide after 3 seconds
+        }
+    };
+
+    const handleCloseToast = () => {
+        setShowToast(false); // Close the success toast immediately
+        setShowFailureToast(false); // Close the failure toast immediately
     };
 
     return (
@@ -81,13 +121,34 @@ function SignUp() {
                     
                     <label>Confirm Password:</label>
                     <input type="password" name="confirmPassword" value={formData.confirmPassword} onChange={handleChange} required />
-
-                    <button className="button" type="submit">Sign Up</button>
+                    <div className="captcha-container">
+                    <ReCAPTCHA
+                    sitekey="6Ler-pQqAAAAAMwkiNmowbgpCwr0MQ1zNff8VphA"
+                    onChange={(val) => setCapVal(val)}
+                    />
+                    </div>
+                    <button className="button" type="submit" disabled={!capVal}>Sign Up</button>
                 </form>
+
+                {/* Show green toast on successful signup */}
+                {showToast && (
+                    <div className="toast-success">
+                        Sign up Successful!
+                        <span className="close-toast" onClick={handleCloseToast}>&#10006;</span>
+                    </div>
+                )}
+
+                {/* Show red toast on signup failure */}
+                {showFailureToast && (
+                    <div className="toast-failure">
+                        Sign up Failed!<br/> The two passwords do not match.
+                        <span className="close-toast" onClick={handleCloseToast}>&#10006;</span>
+                    </div>
+                )}
 
                 {/* Link to Login */}
                 <div className="login-links">
-                <p>Already have an account? <Link to="/login">Login</Link></p>
+                    <p>Already have an account? <Link to="/login">Login</Link></p>
                 </div>
             </div>
             <Footer />

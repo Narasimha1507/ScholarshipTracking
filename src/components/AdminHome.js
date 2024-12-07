@@ -22,7 +22,7 @@ function AdminHome() {
                     <div className="card">
                         <h2>View Reports</h2>
                         <p>Generate and view reports.</p><br/>
-                        <Link to="/applications" className="button">Go to Reports</Link>
+                        <Link to="/dashboard" className="button">Go to Reports</Link>
                     </div>
                 </div>
             </div>

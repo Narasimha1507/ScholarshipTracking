@@ -23,7 +23,7 @@
 /* Headings */
 .aboutus-content h2 {
     font-size: 3rem;
-    color: #2c3e50;
+    color: #3498db;
     margin-bottom: 20px;
     border-bottom: 2px solid #3498db;
     display: inline-block;
@@ -54,7 +54,7 @@
 
 .aboutus-content ul li {
     font-size: 1.125rem;
-    color: #34495e;
+    color: #7f8c8d;
     margin-bottom: 10px;
     padding-left: 10px;
 }

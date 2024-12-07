@@ -48,3 +48,47 @@
         padding: 20px;
     }
 }
+.edit-button {
+    width: 30%;
+    padding: 14px;
+    background-color: #e67e22; /* Bright orange button */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%; /* Makes the image circular */
+    object-fit: cover; /* Ensures the image fits within the circle */
+    margin-bottom: 20px; /* Adds space between the image and the profile details */
+    border: 2px solid #007bff; /* Optional: Add a border for styling */
+}
+
+
+.edit-button:hover {
+    background-color: #d35400; /* Darker orange on hover */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+.change-password-button {
+    width: 40%;
+    padding: 14px;
+    background-color: #e67e22; /* Bright orange button */
+    color: white;
+    margin-left: 10vh;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.change-password-button:hover {
+    background-color: #d35400; /* Darker orange on hover */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}

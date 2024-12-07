@@ -22,6 +22,10 @@ import ViewApplicationsTable from './components/ViewApplications';
 import ViewScholarships from './components/ViewScholarships';
 import AdminNavBar from './components/AdminNavBar'
 import StudentNavBar from './components/StudentNavBar'
+import EditProfile from './components/EditProfile';
+import ChangePassword from './components/ChangePassword';
+import Dashboard from "./components/Dashboard"
+import MyApplications from './components/MyApplications';
 
 export default function App() {
     const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false);
@@ -77,6 +81,10 @@ export default function App() {
                 <Route path="/viewstudent" element={<ViewStudent />} />
                 <Route path="/applications" element={<ViewApplicationsTable />} />
                 <Route path="/viewscholarship" element={<ViewScholarships />} />
+                <Route path="/editprofile" element={<EditProfile />} />
+                <Route path="/changepassword" element={<ChangePassword />} />
+                <Route path="/myapplications" element={<MyApplications />} />
+                <Route path="/dashboard" element={<Dashboard />} />
 
                 
                 {/* Application Form Route */}

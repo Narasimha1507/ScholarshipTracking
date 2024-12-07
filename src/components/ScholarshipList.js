@@ -1,17 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import the useNavigate hook
+import axios from 'axios';
 import './scholarshiplist.css';
 import Footer from './Footer';
 
-const scholarships = [
-    { id: 1, name: 'Merit Scholarship', description: 'For top students.', deadline: '2024-10-30' },
-    { id: 2, name: 'Need-Based Aid', description: 'For students in need.', deadline: '2024-11-15' }
-];
-
 function ScholarshipList() {
-    const navigate = useNavigate(); // Initialize the navigate function
+    const [scholarships, setScholarships] = useState([]); // State to store scholarships
+    const navigate = useNavigate();
 
-    // Function to handle the redirection to the login page
+    // Function to fetch scholarship data from the backend
+    useEffect(() => {
+        const fetchScholarships = async () => {
+            try {
+                const response = await axios.get("http://localhost:8080/api/scholarships/all");
+                setScholarships(response.data); // Update state with fetched data
+            } catch (error) {
+                console.error("Error fetching scholarships:", error);
+            }
+        };
+
+        fetchScholarships();
+    }, []);
+
+    // Function to handle redirection to the login page
     const handleApplyNow = () => {
         navigate('/login'); // Redirect to login page
     };
@@ -23,8 +34,15 @@ function ScholarshipList() {
                 {scholarships.map((scholarship) => (
                     <div key={scholarship.id} className="card">
                         <h3>{scholarship.name}</h3>
-                        <p>{scholarship.description}</p>
+                        <p><strong>Description:</strong> {scholarship.description}</p>
+                        <p><strong>Type:</strong> {scholarship.type}</p>
+                        <p><strong>Eligibility Criteria:</strong> {scholarship.eligibility}</p>
+                        <p><strong>Institution:</strong> {scholarship.institution}</p>
+                        <p><strong>Application URL:</strong> <a href={scholarship.applicationUrl} target="_blank" rel="noopener noreferrer">{scholarship.applicationUrl}</a></p>
+                        <p><strong>Contact Email:</strong> {scholarship.contactEmail}</p>
                         <p><strong>Deadline:</strong> {scholarship.deadline}</p>
+                        <p><strong>Amount:</strong> ${scholarship.amount}</p>
+                        <p><strong>Status:</strong> {scholarship.status}</p>
                         <button className="button" onClick={handleApplyNow}>Apply Now</button> {/* Apply Now button */}
                     </div>
                 ))}

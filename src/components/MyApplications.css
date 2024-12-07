@@ -1,5 +1,14 @@
 /* General container styles */
-.container {
+.my-applications {
+    padding-top: 12vh;
+    background-image: url('../assets/bg.jpg'); /* Background image for the section */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.applications-container {
     margin-bottom: 5vh;
     padding: 30px;
     max-width: 90%;
@@ -8,13 +17,9 @@
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     font-family: 'Roboto', sans-serif;
 }
-.view-applications{
-    background-image: url('../assets/bg.jpg');
-    padding-top: 12vh;
-}
 
 /* Heading styles */
-.container h2 {
+.applications-container h2 {
     color: #34495e;
     margin-bottom: 25px;
     font-size: 28px;
@@ -83,6 +88,49 @@
 .reject-btn:hover {
     background-color: #c0392b;
 }
+
+/* Error message styles */
+.error {
+    color: #e74c3c;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Loading and no applications message */
+.loading,
+.no-applications {
+    color: #34495e;
+    font-size: 18px;
+    text-align: center;
+    margin-top: 20px;
+    font-weight: 500;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .applications-container {
+        padding: 20px;
+    }
+
+    .applications-table th,
+    .applications-table td {
+        font-size: 14px;
+        padding: 8px 10px;
+    }
+
+    .button {
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+}
+.applications-table button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6; /* Optional: To visually differentiate disabled buttons */
+    background-color: #d3d3d3; /* Optional: Gray background for disabled buttons */
+    color: #808080; /* Optional: Gray text for disabled buttons */
+}
 /* Confirm Popup Styles */
 
 .confirm-popup-content p {
@@ -118,7 +166,7 @@
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background-color: #007bff;
+    background-color: #27ae60;
     color: white;
     padding: 10px 20px;
     border-radius: 4px;

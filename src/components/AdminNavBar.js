@@ -15,10 +15,10 @@ function AdminNavbar() {
             <h2>Scholarship Management System</h2>
             <ul>
             <li><Link to="/adminhome">Home</Link></li>
+            <li><Link to="/dashboard">Dashboard</Link></li>
                 <li><Link to="/addscholarship">AddScholarships</Link></li>
-                <li><Link to="/addstudent">AddStudent</Link></li>
-                <li><Link to="/viewstudent">ViewStudent</Link></li>
-                <li><Link to="/applications">Applications</Link></li>
+                <li><Link to="/addstudent">AddUser</Link></li>
+                <li><Link to="/viewstudent">ViewUsers</Link></li>
                 <li><Link to="/viewscholarship">ViewScholarship</Link></li>
                 <li><Link onClick={handleLogout}>LogOut</Link></li>
             </ul>

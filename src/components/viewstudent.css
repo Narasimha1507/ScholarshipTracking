@@ -1,5 +1,5 @@
 /* General container styles */
-.container {
+.view-students .container {
     margin-bottom: 5vh;
     padding: 30px;
     max-width: 90%;
@@ -7,6 +7,7 @@
     border-radius: 10px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     font-family: 'Roboto', sans-serif;
+    overflow: scroll ;
 }
 
 .view-students{
@@ -70,7 +71,7 @@
 
 /* Edit and Delete button styles */
 .edit-btn {
-    background-color: #27ae60;
+    background-color: #e67e22;
 }
 
 .edit-btn:hover {
@@ -83,4 +84,61 @@
 
 .delete-btn:hover {
     background-color: #c0392b;
+}
+.confirm-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.confirm-popup-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 100%;
+}
+
+.confirm-popup-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.cancel-btn {
+    background: #ccc;
+    color: #333;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cancel-btn:hover {
+    background: #bbb;
+}
+
+.delete-btn {
+    background: #f44336;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background: #d32f2f;
+}
+.confirm-popup p{
+    color: black;
 }

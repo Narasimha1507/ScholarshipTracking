@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import "./login.css"; // Import the CSS for styling
 import Footer from './Footer';
+import axios from 'axios';
 
 function SignUp() {
     const [formData, setFormData] = useState({
@@ -19,28 +20,63 @@ function SignUp() {
         confirmPassword: '',
         userType: 'Student', // Default user type
     });
+    const [showToast, setShowToast] = useState(false); // State for the success toast
+    const [showFailureToast, setShowFailureToast] = useState(false); // State for the failure toast
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         
-        // Validate passwords
         if (formData.password !== formData.confirmPassword) {
-            alert('Passwords do not match!');
+            setShowFailureToast(true); // Show the failure toast
+            setTimeout(() => setShowFailureToast(false), 3000); // Hide after 3 seconds
             return;
         }
-        
-        // Sign Up API call
-        alert('Sign up successful!');
+    
+        try {
+            const response = await axios.post('http://localhost:8080/api/users/signup', formData);
+            if (response.status === 200) {
+                setShowToast(true); // Show the success toast
+                setTimeout(() => {
+                    setShowToast(false); // Hide the toast
+                }, 2000);
+                // Reset form data
+                setFormData({
+                    name: '',
+                    email: '',
+                    phone: '',
+                    aadhar: '',
+                    dob: '',
+                    fatherName: '',
+                    fatherPhone: '',
+                    motherName: '',
+                    motherPhone: '',
+                    college: '',
+                    cgpa: '',
+                    password: '',
+                    confirmPassword: '',
+                    userType: 'Student',
+                });
+            }
+        } catch (error) {
+            console.error('There was an error signing up!', error);
+            setShowFailureToast(true); // Show the failure toast
+            setTimeout(() => setShowFailureToast(false), 3000); // Hide after 3 seconds
+        }
+    };
+
+    const handleCloseToast = () => {
+        setShowToast(false); // Close the success toast immediately
+        setShowFailureToast(false); // Close the failure toast immediately
     };
 
     return (
         <div className='signup'>
-            <div className="container">
-                <h2>Add Student</h2>
+            <div className="logincontainer">
+                <h2>Add User</h2>
                 <form onSubmit={handleSubmit}>
                     <label>Name:</label>
                     <input type="text" name="name" value={formData.name} onChange={handleChange} required />
@@ -84,10 +120,23 @@ function SignUp() {
                     <button className="button" type="submit">Sign Up</button>
                 </form>
 
-                {/* Link to Login */}
-                
+                {/* Show green toast on successful signup */}
+                {showToast && (
+                    <div className="toast-success">
+                        User Added Successfully!
+                        <span className="close-toast" onClick={handleCloseToast}>&#10006;</span>
+                    </div>
+                )}
+
+                {/* Show red toast on signup failure */}
+                {showFailureToast && (
+                    <div className="toast-failure">
+                        Adding User Failed!<br/> The two passwords do not match.
+                        <span className="close-toast" onClick={handleCloseToast}>&#10006;</span>
+                    </div>
+                )}
             </div>
-            <Footer/>
+            <Footer />
         </div>
     );
 }
