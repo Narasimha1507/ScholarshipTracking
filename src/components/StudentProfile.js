@@ -3,6 +3,7 @@ import './StudentProfile.css';
 import Footer from './Footer';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import config from '../config';
 
 function Profile() {
     const [profileData, setProfileData] = useState({});
@@ -14,7 +15,7 @@ function Profile() {
             try {
                 const userId = localStorage.getItem('userId');
                 if (userId) {
-                    const response = await axios.get(`http://localhost:8080/api/users/profile?userId=${userId}`);
+                    const response = await axios.get(`${config.url}/api/users/profile?userId=${userId}`);
                     setProfileData(response.data);
                 } else {
                     setError("User not logged in");

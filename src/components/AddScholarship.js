@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './addscholarship.css'; // Ensure you have this CSS file for styling
 import Footer from './Footer'; // Assuming you have a Footer component
 import axios from 'axios'; // For making HTTP requests
+import config from '../config';
 
 function AddScholarship() {
     const [formData, setFormData] = useState({
@@ -26,7 +27,7 @@ function AddScholarship() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post("http://localhost:8080/api/scholarships/add", formData);
+            await axios.post(`${config.url}/api/scholarships/add`, formData);
             setShowSuccessToast(true); // Show the success toast
             setTimeout(() => setShowSuccessToast(false), 3000); // Hide after 3 seconds
 

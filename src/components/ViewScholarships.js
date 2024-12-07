@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'; // Link for navigation to edit pages
 import './viewscholarships.css'; // Create your custom CSS for styling
 import Footer from './Footer'; // Assuming Footer is a shared component
 import axios from 'axios';
+import config from '../config';
 
 function ViewScholarships() {
     const [scholarships, setScholarships] = useState([]); // State to store scholarships
@@ -13,7 +14,7 @@ function ViewScholarships() {
     useEffect(() => {
         const fetchScholarships = async () => {
             try {
-                const response = await axios.get("http://localhost:8080/api/scholarships/all");
+                const response = await axios.get(`${config.url}/api/scholarships/all`);
                 setScholarships(response.data); // Update state with fetched data
             } catch (error) {
                 console.error("Error fetching scholarships:", error);
@@ -31,7 +32,7 @@ function ViewScholarships() {
     const handleDelete = async () => {
         try {
             // API call to delete the scholarship
-            await axios.delete(`http://localhost:8080/api/scholarships/${selectedScholarship.id}`);
+            await axios.delete(`${config.url}/api/scholarships/${selectedScholarship.id}`);
 
             // Remove the deleted scholarship from the state
             setScholarships((prevScholarships) =>

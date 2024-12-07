@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './scholarshiplist.css';
 import Footer from './Footer';
 import axios from 'axios';
+import config from '../config';
 
 function ScholarshipList() {
     const [scholarships, setScholarships] = useState([]);
@@ -14,7 +15,7 @@ function ScholarshipList() {
     useEffect(() => {
         const fetchScholarships = async () => {
             try {
-                const response = await axios.get("http://localhost:8080/api/scholarships/all");
+                const response = await axios.get(`${config.url}/api/scholarships/all`);
                 setScholarships(response.data);
             } catch (error) {
                 console.error("Error fetching scholarships:", error);
@@ -32,7 +33,7 @@ function ScholarshipList() {
             try {
                 const userId = localStorage.getItem('userId'); // Retrieve user ID from local storage
                 if (userId) {
-                    const response = await axios.get(`http://localhost:8080/api/users/profile?userId=${userId}`);
+                    const response = await axios.get(`${config.url}/api/users/profile?userId=${userId}`);
                     setUserData(response.data);
                 } else {
                     setError("User not logged in");
@@ -56,7 +57,8 @@ function ScholarshipList() {
         };
 
         try {
-            const response = await axios.post("http://localhost:8080/api/applications/submit", applicationDetails);
+            const response = await axios.post(`${config.url}/api/applications/submit`, applicationDetails);
+            console.log(response.data);
             setToastMessage("Application submitted successfully!");
             setShowToast(true);
         } catch (error) {

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './adminlogin.css';
 import Footer from './Footer';
 import axios from 'axios';
+import config from '../config';
 
 function AdminLogin({ onAdminLogin }) {
     const [formData, setFormData] = useState({ username: '', password: '' });
@@ -19,7 +20,7 @@ function AdminLogin({ onAdminLogin }) {
         e.preventDefault();
         
         try {
-            const response = await axios.post('http://localhost:8080/api/admin/login', formData);
+            const response = await axios.post(`${config.url}/api/admin/login`, formData);
             
             if (response.status === 200) {
                 onAdminLogin();

@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import "./changepassword.css"; // Import the same CSS as SignUp
 import Footer from './Footer'; // Assuming Footer is used in both
+import config from '../config';
 
 function ChangePassword() {
     const [currentPassword, setCurrentPassword] = useState('');
@@ -21,7 +22,7 @@ function ChangePassword() {
 
         try {
             const userId = localStorage.getItem('userId');
-            const response = await axios.put('http://localhost:8080/api/users/changepassword', {
+            const response = await axios.put(`${config.url}/api/users/changepassword`, {
                 userId,
                 currentPassword,
                 newPassword,

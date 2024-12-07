@@ -3,6 +3,7 @@ import Footer from './Footer';
 import "./homepage.css";
 import bgVideo from './bg.mp4';
 import axios from 'axios';
+import config from '../config';
 
 function HomePage() {
     const aboutUsRef = useRef(null);
@@ -24,7 +25,7 @@ function HomePage() {
                 
                 // If userId exists, make the API request
                 if (userId) {
-                    const response = await axios.get(`http://localhost:8080/api/users/profile?userId=${userId}`);
+                    const response = await axios.get(`${config.url}/api/users/profile?userId=${userId}`);
                     setUserName(response.data.name);
                 }
             } catch (error) {

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './MyApplications.css'; // Add styling for this component if needed
 import Footer from './Footer';
+import config from '../config';
 
 function MyApplications() {
     const [applications, setApplications] = useState([]);
@@ -22,7 +23,7 @@ function MyApplications() {
             }
 
             try {
-                const emailResponse = await axios.get(`http://localhost:8080/api/users/profile?userId=${userId}`);
+                const emailResponse = await axios.get(`${config.url}/api/users/profile?userId=${userId}`);
                 const userEmail = emailResponse.data.email;
 
                 if (!userEmail) {
@@ -31,7 +32,7 @@ function MyApplications() {
                     return;
                 }
 
-                const applicationsResponse = await axios.get(`http://localhost:8080/api/applications/email/${userEmail}`);
+                const applicationsResponse = await axios.get(`${config.url}/api/applications/email/${userEmail}`);
                 setApplications(applicationsResponse.data);
             } catch (error) {
                 console.error("Error fetching data:", error);
@@ -56,7 +57,7 @@ function MyApplications() {
 
     const handleCancel = async () => {
         try {
-            await axios.delete(`http://localhost:8080/api/applications/${selectedApplication.id}`);
+            await axios.delete(`${config.url}/api/applications/${selectedApplication.id}`);
             setApplications((prev) => prev.filter((app) => app.id !== selectedApplication.id));
             setToastMessage("Application canceled successfully!");
             setShowToast(true);

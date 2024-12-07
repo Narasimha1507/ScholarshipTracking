@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'; // Import the useNavigate hook
 import axios from 'axios';
 import './scholarshiplist.css';
 import Footer from './Footer';
+import config from '../config';
 
 function ScholarshipList() {
     const [scholarships, setScholarships] = useState([]); // State to store scholarships
@@ -12,7 +13,7 @@ function ScholarshipList() {
     useEffect(() => {
         const fetchScholarships = async () => {
             try {
-                const response = await axios.get("http://localhost:8080/api/scholarships/all");
+                const response = await axios.get(`${config.url}/api/scholarships/all`);
                 setScholarships(response.data); // Update state with fetched data
             } catch (error) {
                 console.error("Error fetching scholarships:", error);

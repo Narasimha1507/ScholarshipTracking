@@ -4,6 +4,7 @@ import './login.css';
 import Footer from './Footer';
 import axios from 'axios';
 import ReCAPTCHA from "react-google-recaptcha"
+import config from '../config';
 //6Ler-pQqAAAAAMwkiNmowbgpCwr0MQ1zNff8VphA
 
 function Login({ onStudentLogin }) {
@@ -22,7 +23,7 @@ function Login({ onStudentLogin }) {
         e.preventDefault();
 
         try {
-            const response = await axios.post('http://localhost:8080/api/users/login', formData);
+            const response = await axios.post(`${config.url}/api/users/login`, formData);
 
             if (response.data.success) { // Check for success field in response
                 onStudentLogin();

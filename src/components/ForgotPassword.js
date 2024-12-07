@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import "./login.css"; // Import CSS for styling
 import Footer from './Footer';
+import config from '../config';
 
 function ForgotPassword() {
     const [email, setEmail] = useState('');
@@ -46,7 +47,7 @@ function ForgotPassword() {
 
         try {
             // Make API call to update the password
-            const response = await axios.post('http://localhost:8080/api/users/resetpassword', {
+            const response = await axios.post(`${config.url}/api/users/resetpassword`, {
                 email,
                 newPassword,
             });

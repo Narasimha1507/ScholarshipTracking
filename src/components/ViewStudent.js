@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './viewstudent.css';
 import Footer from './Footer';
+import config from '../config';
 
 function ViewStudentsTable() {
     const [students, setStudents] = useState([]);
@@ -13,7 +14,7 @@ function ViewStudentsTable() {
     useEffect(() => {
         const fetchStudents = async () => {
             try {
-                const response = await fetch('http://localhost:8080/api/admin/getusers');
+                const response = await fetch(`${config.url}/api/admin/getusers`);
                 const data = await response.json();
                 setStudents(data);
             } catch (error) {
@@ -31,7 +32,7 @@ function ViewStudentsTable() {
 
     const handleDelete = async () => {
         try {
-            await fetch(`http://localhost:8080/api/admin/deleteuser/${selectedStudent.id}`, {
+            await fetch(`${config.url}/api/admin/deleteuser/${selectedStudent.id}`, {
                 method: 'DELETE',
             });
 

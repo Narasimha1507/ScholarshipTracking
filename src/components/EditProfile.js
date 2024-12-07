@@ -5,6 +5,7 @@ import './login.css'; // Using the same CSS as SignUp
 import Footer from './Footer';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import config from '../config';
 
 function EditProfile() {
     const [formData, setFormData] = useState({
@@ -29,7 +30,7 @@ function EditProfile() {
             try {
                 const userId = localStorage.getItem('userId');
                 if (userId) {
-                    const response = await axios.get(`http://localhost:8080/api/users/profile?userId=${userId}`);
+                    const response = await axios.get(`${config.url}/api/users/profile?userId=${userId}`);
                     setFormData(response.data);
                 } else {
                     setError("User not logged in");
@@ -52,7 +53,7 @@ function EditProfile() {
         try {
             console.log(formData);
             const userId = localStorage.getItem('userId');
-            await axios.put(`http://localhost:8080/api/users/profile`, { ...formData, id: userId });
+            await axios.put(`${config.url}/api/users/profile`, { ...formData, id: userId });
             navigate('/profile'); // Redirect to Profile page after update
         } catch (error) {
             console.error("Error updating profile:", error);

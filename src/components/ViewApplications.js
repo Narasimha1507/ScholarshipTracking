@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './viewapplications.css'; // Add your CSS styling here
 import Footer from './Footer'; // Assuming you have a Footer component
 import axios from 'axios'; // For making API requests
+import config from '../config';
 
 function ViewApplicationsTable() {
     const [applications, setApplications] = useState([]);
@@ -15,7 +16,7 @@ function ViewApplicationsTable() {
     useEffect(() => {
         const fetchApplications = async () => {
             try {
-                const response = await axios.get("http://localhost:8080/api/applications/all");
+                const response = await axios.get(`${config.url}/api/applications/all`);
                 console.log(response.data); // Check the data
                 setApplications(response.data);
             } catch (error) {
@@ -44,7 +45,7 @@ function ViewApplicationsTable() {
 const handleApprove = async () => {
     if (selectedApplication.action === 'Approve') {
         try {
-            await axios.put(`http://localhost:8080/api/applications/${selectedApplication.id}/status`, { status: "Approved" });
+            await axios.put(`${config.url}/api/applications/${selectedApplication.id}/status`, { status: "Approved" });
             setApplications((prevApplications) =>
                 prevApplications.map((app) =>
                     app.id === selectedApplication.id ? { ...app, status: "Approved" } : app
@@ -65,7 +66,7 @@ const handleApprove = async () => {
 const handleReject = async () => {
     if (selectedApplication.action === 'Reject') {
         try {
-            await axios.put(`http://localhost:8080/api/applications/${selectedApplication.id}/status`, { status: "Rejected" });
+            await axios.put(`${config.url}/api/applications/${selectedApplication.id}/status`, { status: "Rejected" });
             setApplications((prevApplications) =>
                 prevApplications.map((app) =>
                     app.id === selectedApplication.id ? { ...app, status: "Rejected" } : app

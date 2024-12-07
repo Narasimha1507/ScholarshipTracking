@@ -4,6 +4,7 @@ import "./login.css"; // Import the CSS for styling
 import Footer from './Footer';
 import ReCAPTCHA from "react-google-recaptcha"
 import axios from 'axios';
+import config from '../config';
 
 function SignUp() {
     const [formData, setFormData] = useState({
@@ -41,7 +42,7 @@ function SignUp() {
         }
     
         try {
-            const response = await axios.post('http://localhost:8080/api/users/signup', formData);
+            const response = await axios.post(`${config.url}/api/users/signup`, formData);
             if (response.status === 200) {
                 setShowToast(true); // Show the success toast
                 setTimeout(() => {

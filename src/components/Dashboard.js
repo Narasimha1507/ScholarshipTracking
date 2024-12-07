@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import PieChartComponent from './PieChartComponent';
 import "./dashboard.css";
+import config from '../config';
 
 function Dashboard() {
   const [applications, setApplications] = useState([]);
@@ -22,10 +23,10 @@ function Dashboard() {
     setLoading(true);
     try {
       const [adminCountsRes, statusCountsRes, scholarshipsRes, applicationsRes] = await Promise.all([
-        axios.get('http://localhost:8080/api/admin/getCounts'),
-        axios.get('http://localhost:8080/api/scholarships/applicationCounts'),
-        axios.get('http://localhost:8080/api/scholarships/all'),
-        axios.get('http://localhost:8080/api/scholarships/applications'),
+        axios.get(`${config.url}/api/admin/getCounts`),
+        axios.get(`${config.url}/api/scholarships/applicationCounts`),
+        axios.get(`${config.url}/api/scholarships/all`),
+        axios.get(`${config.url}/api/scholarships/applications`),
       ]);
 
       setAdminCounts(adminCountsRes.data);
@@ -62,7 +63,7 @@ function Dashboard() {
 
   const updateApplicationStatus = async (newStatus) => {
     try {
-      await axios.put(`http://localhost:8080/api/applications/${selectedApplication.id}/status`, { status: newStatus });
+      await axios.put(`${config.url}/api/applications/${selectedApplication.id}/status`, { status: newStatus });
       setShowToast(true);
       fetchData(); // Refresh data after successful update
     } catch (error) {
