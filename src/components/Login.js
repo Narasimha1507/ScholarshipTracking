@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import './login.css';
 import Footer from './Footer';
 import axios from 'axios';
-import ReCAPTCHA from "react-google-recaptcha"
+// import ReCAPTCHA from "react-google-recaptcha"
 import config from '../config';
 //6Ler-pQqAAAAAMwkiNmowbgpCwr0MQ1zNff8VphA
 
@@ -12,7 +12,7 @@ function Login({ onStudentLogin }) {
     const [error, setError] = useState('');
     const [showToast, setShowToast] = useState(false); // State for the success toast
     const [showFailureToast, setShowFailureToast] = useState(false); // State for the failure toast
-    const[capVal,setCapVal] = useState(null);
+    // const[capVal,setCapVal] = useState(null);
     const navigate = useNavigate();
 
     const handleChange = (e) => {
@@ -73,13 +73,14 @@ function Login({ onStudentLogin }) {
                         onChange={handleChange}
                         required
                     />
-                    <div className="captcha-container">
+                    {/* <div className="captcha-container">
                     <ReCAPTCHA
                     sitekey="6Ler-pQqAAAAAMwkiNmowbgpCwr0MQ1zNff8VphA"
                     onChange={(val) => setCapVal(val)}
                     />
-                    </div>
-                    <button className="button" type="submit" disabled={!capVal}>Login</button>
+                    </div> */}
+                    {/* <button className="button" type="submit" disabled={!capVal}>Login</button> */}
+                    <button className="button" type="submit" >Login</button>
                 </form>
 
                 {/* Show green toast on successful login */}
