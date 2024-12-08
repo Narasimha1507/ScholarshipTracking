@@ -86,7 +86,6 @@ table {
   margin-top: 30px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
-
 th, td {
   padding: 12px 20px;
   text-align: left;
@@ -165,4 +164,13 @@ button:focus {
       font-size: 12px;
       padding: 6px 12px;
   }
+}
+.confirm-popup-content p {
+  margin-bottom: 20px;
+  font-size: 1.1em;
+}
+
+.confirm-popup-actions {
+  display: flex;
+  justify-content: space-between;
 }

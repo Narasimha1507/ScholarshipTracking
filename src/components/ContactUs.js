@@ -67,13 +67,13 @@ function ContactUs(){
 
   return (
     <section className="contactus" id="connect">
-      <Container className="container">
+      <Container id="container">
         <Row className="contactus-container">
           <Col size={12} md={6}>
             <TrackVisibility>
               {({ isVisible }) => (
                 <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
-                  <h2>Contact Us</h2>
+                  <h2 style={{color:"white"}}>Contact Us</h2>
                   <p>If you have any questions, feel free to reach out to us. We're here to help!</p>
 
                     <div className="contact-info">

@@ -9,12 +9,12 @@
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
-.container{
-    background: transparent;
-}
 .contactus{
     background-image: url('../assets/bg.jpg');
     padding-top: 40px;
+}
+#container{
+    background: transparent;
 }
 
 .contactus-container p{

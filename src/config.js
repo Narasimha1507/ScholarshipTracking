@@ -1,4 +1,4 @@
 const config = {
-    url : "http://localhost:8080"
+    url : "https://springbootsdp.up.railway.app"
 };
 export default config

@@ -147,8 +147,8 @@ function Dashboard() {
         <div className="confirm-popup">
           <div className="confirm-popup-content">
             <p>
-              Are you sure you want to {selectedApplication?.action.toLowerCase()} this application for{' '}
-              <strong>{selectedApplication?.scholarshipName}</strong>?
+            Are you sure you want to {selectedApplication?.action.toLowerCase()} this application for{' '} 
+            {selectedApplication?.scholarshipName}?
             </p>
             <div className="confirm-popup-actions">
               <button className="button cancel-btn" onClick={closeConfirmPopup}>No</button>
