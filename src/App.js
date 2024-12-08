@@ -26,6 +26,7 @@ import EditProfile from './components/EditProfile';
 import ChangePassword from './components/ChangePassword';
 import Dashboard from "./components/Dashboard"
 import MyApplications from './components/MyApplications';
+import PageNotFound from './PageNotFound';
 
 export default function App() {
     const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false);
@@ -85,6 +86,7 @@ export default function App() {
                 <Route path="/changepassword" element={<ChangePassword />} />
                 <Route path="/myapplications" element={<MyApplications />} />
                 <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="*" element={<PageNotFound />} />
 
                 
                 {/* Application Form Route */}
